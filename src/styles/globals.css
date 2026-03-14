@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  --primary: #2f7e79;
+  --primary-foreground: #ffffff;
+
+  --muted: #f3f4f6;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.btn-primary {
+  @apply bg-[#2f7e79] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition;
+}
+
+.btn-secondary {
+  @apply border border-gray-300 px-6 py-3 rounded-full hover:bg-gray-50 transition;
+}
+
+.card {
+  @apply bg-white rounded-xl p-6 shadow-sm border border-gray-100;
+}
