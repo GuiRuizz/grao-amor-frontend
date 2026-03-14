@@ -4,7 +4,7 @@ import { Award, Package, HeartPulse } from "lucide-react";
 
 export function ValuesSection() {
     return (
-        <section className="bg-green-50 py-20">
+        <section className="bg-green-100 py-20">
             <div className="max-w-6xl mx-auto text-center">
 
                 <h2 className="text-3xl font-bold mb-2">

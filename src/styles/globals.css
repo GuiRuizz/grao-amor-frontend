@@ -24,13 +24,39 @@ body {
 }
 
 .btn-primary {
-  @apply bg-[#2f7e79] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition;
+  background-color: #2f7e79;
+  color: #ffffff;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
 .btn-secondary {
-  @apply border border-gray-300 px-6 py-3 rounded-full hover:bg-gray-50 transition;
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem; /* px-6 */
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem; /* py-3 */
+  border-radius: 9999px; /* rounded-full */
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #f9fafb; /* bg-gray-50 */
 }
 
 .card {
-  @apply bg-white rounded-xl p-6 shadow-sm border border-gray-100;
+  background-color: #ffffff; /* bg-white */
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 1.5rem; /* p-6 */
+  box-shadow: 0 1px 2px 0 rgb(16 24 40 / 0.05); /* shadow-sm */
+  border: 1px solid #f3f4f6; /* border-gray-100 */
 }

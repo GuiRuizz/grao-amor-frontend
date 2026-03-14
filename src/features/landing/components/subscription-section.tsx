@@ -1,5 +1,5 @@
 import { ValueCard } from "./card-section";
-import { Award, Package, HeartPulse } from "lucide-react";
+import { ClipboardList, Cat, Truck } from "lucide-react";
 
 
 export function SubscriptionSection() {
@@ -12,34 +12,34 @@ export function SubscriptionSection() {
                 </h2>
 
                 <p className="text-gray-500 mb-10">
-                    Praticidade para você, saúde constante para eles.
+                    Nunca mais esqueça de comprar ração. Receba automaticamente em casa e ainda aproveite benefícios exclusivos para o seu pet.
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-6">
                     <ValueCard
-                        title="Escolha o plano"
-                        text="Selecione a frequência e o tipo de alimento ideal para o perfil do seu pet."
-                        icon={Package}
+                        title="Escolha o plano ideal"
+                        text="Defina a frequência de entrega e a ração ideal para o seu pet. Nós cuidamos do resto."
+                        icon={ClipboardList}
                         colorIcon="bg-blue-100 text-blue-600"
-                        centerIcon={true}
+                        centerIcon
                         colorBackground="bg-blue-100"
                     />
 
                     <ValueCard
                         title="Receba em casa"
-                        text="Entrega rápida, grátis e programada para você nunca mais se preocupar com estoque."
-                        icon={Package}
+                        text="Entrega programada para você nunca mais se preocupar em comprar ração de última hora."
+                        icon={Truck}
                         colorIcon="bg-blue-100 text-blue-600"
-                        centerIcon={true}
+                        centerIcon
                         colorBackground="bg-blue-100"
                     />
 
                     <ValueCard
-                        title="Pet feliz e saudável"
-                        text="Aproveite os momentos que importam enquanto nós cuidamos da nutrição."
-                        icon={Package}
+                        title="Benefícios exclusivos"
+                        text="Assinantes participam de sorteios semanais e recebem brindes especiais para deixar cada entrega ainda mais feliz."
+                        icon={Cat}
                         colorIcon="bg-blue-100 text-blue-600"
-                        centerIcon={true}
+                        centerIcon
                         colorBackground="bg-blue-100"
                     />
                 </div>

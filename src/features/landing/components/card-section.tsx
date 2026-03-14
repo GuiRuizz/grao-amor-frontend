@@ -32,7 +32,7 @@ export function ValueCard({
                 <div
                     className={`w-10 h-10 flex items-center justify-center rounded-lg ${colorIcon}`}
                 >
-                    <Icon size={20} />
+                    <Icon size={30} />
                 </div>
 
                 <h3 className="font-semibold text-lg">
