@@ -6,7 +6,7 @@ export // Mock de produtos (vai ser substituído pela API)
             preco: 189.9,
             estrelas: 5,
             avaliacao: 120,
-            imagem: "/produtos/premium-adulto-frango.png",
+            imagem: "https://placekittens.com/g/200/200",
             destaque: "Top 1",
         },
         {
@@ -15,7 +15,7 @@ export // Mock de produtos (vai ser substituído pela API)
             preco: 215.0,
             estrelas: 4,
             avaliacao: 85,
-            imagem: "/produtos/filhotes-grain-free.png",
+            imagem: "https://placekittens.com/g/300/300",
         },
         {
             id: 3,
@@ -23,7 +23,7 @@ export // Mock de produtos (vai ser substituído pela API)
             preco: 195.5,
             estrelas: 5,
             avaliacao: 94,
-            imagem: "/produtos/senior-articulacoes.png",
+            imagem: "https://placekittens.com/g/100/100",
         },
         {
             id: 4,
@@ -31,6 +31,6 @@ export // Mock de produtos (vai ser substituído pela API)
             preco: 145.0,
             estrelas: 5,
             avaliacao: 203,
-            imagem: "/produtos/gatos-castrados-salmao.png",
+            imagem: "https://placekittens.com/g/150/150",
         },
     ];
