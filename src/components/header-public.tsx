@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 
 
-export function Header() {
+export function HeaderPublic() {
     const pathname = usePathname();
 
     const hideAuthButtons =

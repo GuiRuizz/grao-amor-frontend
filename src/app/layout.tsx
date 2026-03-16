@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import '../styles/globals.css'
-import { Header } from "../components/header-public";
 import { Montserrat, Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: "Grão de Amor",
@@ -14,6 +13,7 @@ export const metadata: Metadata = {
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
 });
 export default function RootLayout({
   children,
@@ -23,7 +23,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={montserrat.className}>
-        <Header />
         {children}
       </body>
     </html>
