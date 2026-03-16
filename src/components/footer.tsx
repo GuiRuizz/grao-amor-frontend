@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/src/components/ui/separator"
 import { Mail, Phone, Clock, Share2, Globe } from "lucide-react"
 
 export function Footer() {

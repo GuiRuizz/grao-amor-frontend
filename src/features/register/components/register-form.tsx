@@ -1,15 +1,11 @@
-import { cn } from "@/src/lib/utils"
-import { Button } from "@/src/components/ui/button"
-import {
-    Field,
-    FieldDescription,
-    FieldGroup,
-    FieldLabel,
-    FieldSeparator,
-} from "@/src/components/ui/field"
-import { Input } from "@/src/components/ui/input"
+import { Button } from "@/src/components/ui/button";
+import { FieldGroup, Field, FieldLabel, FieldDescription, FieldSeparator } from "@/src/components/ui/field";
+import { Input } from "@/src/components/ui/input";
+import { cn } from "@/src/lib/utils";
 
-export function LoginForm({
+
+
+export function SignupForm({
     className,
     ...props
 }: React.ComponentProps<"form">) {
@@ -17,29 +13,33 @@ export function LoginForm({
         <form className={cn("flex flex-col gap-6", className)} {...props}>
             <FieldGroup>
                 <div className="flex flex-col items-center gap-1 text-center">
-                    <h1 className="text-2xl font-bold">Entre com a sua conta</h1>
+                    <h1 className="text-2xl font-bold">Crie a sua conta</h1>
                     <p className="text-sm text-balance text-muted-foreground">
-                        Digite o seu e-mail e senha para entraar em nosso sistema
+                        Preencha os campos para criar a sua conta
                     </p>
                 </div>
                 <Field>
+                    <FieldLabel htmlFor="name">Nome completo</FieldLabel>
+                    <Input id="name" type="text" placeholder="João Guilherme" required />
+                </Field>
+                <Field>
                     <FieldLabel htmlFor="email">Email</FieldLabel>
-                    <Input id="email" type="email" placeholder="m@example.com" required />
+                    <Input id="email" type="email" placeholder="m@examplo.com" required />
                 </Field>
                 <Field>
-                    <div className="flex items-center">
-                        <FieldLabel htmlFor="password">Senha</FieldLabel>
-                        <a
-                            href="#"
-                            className="ml-auto text-sm underline-offset-4 hover:underline"
-                        >
-                            Esqueceu a senha?
-                        </a>
-                    </div>
+                    <FieldLabel htmlFor="password">Senha</FieldLabel>
                     <Input id="password" type="password" required />
+                    <FieldDescription>
+                        Precisa ter pelo menos 8 caracteres.
+                    </FieldDescription>
                 </Field>
                 <Field>
-                    <Button type="submit">Login</Button>
+                    <FieldLabel htmlFor="confirm-password">Confirmar Senha</FieldLabel>
+                    <Input id="confirm-password" type="password" required />
+                    <FieldDescription>Por favor, digite sua senha novamente.</FieldDescription>
+                </Field>
+                <Field>
+                    <Button type="submit">Criar conta</Button>
                 </Field>
                 <FieldSeparator>Ou continue com</FieldSeparator>
                 <Field>
@@ -52,11 +52,8 @@ export function LoginForm({
                         </svg>
                         Login com o Google
                     </Button>
-                    <FieldDescription className="text-center">
-                        Não tem uma conta?{" "}
-                        <a href="/register" className="underline underline-offset-4">
-                            Inscreva-se
-                        </a>
+                    <FieldDescription className="px-6 text-center">
+                        Já tem uma conta? <a href="/sign-in">Entre</a>
                     </FieldDescription>
                 </Field>
             </FieldGroup>
