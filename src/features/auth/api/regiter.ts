@@ -1,11 +1,11 @@
 import { API_BASE_URL } from "@/src/lib/api";
 import { IAuthResponse } from "../../types/auth";
 import { authRoutes } from "./routes/auth-routes";
-import { LoginRequestDTO } from "./DTO/authDTO";
+import { RegisterRequestDTO } from "./DTO/authDTO";
 
 
-export async function loginRequest(data: LoginRequestDTO): Promise<IAuthResponse> {
-    const response = await fetch(`${API_BASE_URL}${authRoutes.signIn()}`, {
+export async function registerRequest(data: RegisterRequestDTO): Promise<IAuthResponse> {
+    const response = await fetch(`${API_BASE_URL}${authRoutes.register()}`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -14,7 +14,7 @@ export async function loginRequest(data: LoginRequestDTO): Promise<IAuthResponse
     });
 
     if (!response.ok) {
-        throw new Error("Erro ao fazer login");
+        throw new Error("Erro ao registrar o usuário");
     }
 
     return response.json();

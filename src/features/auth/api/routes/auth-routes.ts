@@ -1,6 +1,6 @@
 export const authRoutes = {
     signIn: () => "/auth/login",
-    register: () => "/auth/register",
+    register: () => "/users",
     me: () => "/me",
 
     refreshToken: () => "/auth/refresh-token",

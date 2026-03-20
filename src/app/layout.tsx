@@ -5,6 +5,9 @@ import { cn } from "@/src/lib/utils";
 import { AuthProvider } from "../features/auth/providers/auth-provider";
 import { ReactQueryProvider } from "../providers/react-query-provider";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
@@ -29,6 +32,18 @@ export default function RootLayout({
         <ReactQueryProvider>
           <AuthProvider>
             {children}
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
           </AuthProvider>
         </ReactQueryProvider>
       </body>

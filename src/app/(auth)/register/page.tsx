@@ -1,5 +1,5 @@
 
-import { SignupForm } from "@/src/features/auth/components/register-form"
+import { RegisterForm } from "@/src/features/auth/components/register-form"
 import pinguim from "@/src/images/pinguim.png"
 import logo from "@/src/images/logo-simbolo.png"
 import Image from "next/image"
@@ -36,7 +36,7 @@ export default function RegisterPage() {
 
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <SignupForm />
+            <RegisterForm />
           </div>
         </div>
       </div>
