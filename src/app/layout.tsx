@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import '../styles/globals.css'
 import { Montserrat, Geist } from "next/font/google";
 import { cn } from "@/src/lib/utils";
+import { AuthProvider } from "../features/auth/providers/auth-provider";
+import { ReactQueryProvider } from "../providers/react-query-provider";
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: "Grão de Amor",
-  description: "Gerando valor com confiança e fidelidade"
+  description: "Gerando valor com confiança e fidelidade",
 }
 
 const montserrat = Montserrat({
@@ -15,6 +17,7 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
 });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={montserrat.className}>
-        {children}
+        <ReactQueryProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

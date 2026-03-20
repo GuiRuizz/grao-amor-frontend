@@ -1,5 +1,5 @@
 
-import { SignupForm } from "@/src/features/register/components/register-form"
+import { SignupForm } from "@/src/features/auth/components/register-form"
 import pinguim from "@/src/images/pinguim.png"
 import logo from "@/src/images/logo-simbolo.png"
 import Image from "next/image"

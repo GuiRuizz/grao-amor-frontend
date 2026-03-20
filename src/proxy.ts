@@ -1,46 +1,57 @@
-import { publicDecrypt } from "crypto"
 import { type MiddlewareConfig, type NextRequest, NextResponse } from "next/server"
+import { jwtDecode } from "jwt-decode"
 
-const publicRoutes = [
-    { path: '/sign-in', whenAuthenticated: 'redirect' },
-    { path: '/register', whenAuthenticated: 'redirect' },
-    { path: '/pricing', whenAuthenticated: 'next' },
-    { path: '/', whenAuthenticated: 'next' },
-] as const
+interface TokenPayload {
+    role: "ADMIN" | "USER"
+}
 
-const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/sign-in'
+const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = "/sign-in"
 
 export function proxy(request: NextRequest) {
     const path = request.nextUrl.pathname
-    const publicRoute = publicRoutes.find(route => route.path == path)
-    const authToken = request.cookies.get('token')
 
-    if (!authToken && publicRoute) {
-        return NextResponse.next()
+    const token = request.cookies.get("token")?.value
+
+    let role: "ADMIN" | "USER" | null = null
+
+    if (token) {
+        try {
+            const decoded = jwtDecode<TokenPayload>(token)
+            role = decoded.role
+        } catch {
+            role = null
+        }
     }
 
-    if (!authToken && !publicRoute) {
-        const redirectUrl = request.nextUrl.clone()
+    // 🧠 helpers
+    const isAuthRoute = path === "/sign-in" || path === "/register"
+    const isPublicRoute = path === "/" || path === "/pricing"
+    const isAdminRoute = path.startsWith("/dashboard")
 
-        redirectUrl.pathname = REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE
+    // 🚫 NÃO LOGADO
+    if (!token) {
+        if (isPublicRoute || isAuthRoute) {
+            return NextResponse.next()
+        }
 
-        return NextResponse.redirect(redirectUrl)
-
+        return NextResponse.redirect(new URL(REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE, request.url))
     }
 
-    if (authToken && publicRoute && publicRoute.whenAuthenticated == 'redirect') {
-        const redirectUrl = request.nextUrl.clone()
-
-        redirectUrl.pathname = '/'
-
-        return NextResponse.redirect(redirectUrl)
-
+    // ✅ LOGADO tentando acessar login/register
+    if (token && isAuthRoute) {
+        return NextResponse.redirect(
+            new URL(role === "ADMIN" ? "/dashboard" : "/", request.url)
+        )
     }
 
-    if (authToken && !publicRoute) {
+    // 🔐 USER tentando acessar área ADMIN
+    if (token && role !== "ADMIN" && isAdminRoute) {
+        return NextResponse.redirect(new URL("/", request.url))
+    }
 
-        return NextResponse.next()
-
+    // 👑 ADMIN tentando acessar fora do dashboard
+    if (token && role === "ADMIN" && !isAdminRoute) {
+        return NextResponse.redirect(new URL("/dashboard", request.url))
     }
 
     return NextResponse.next()
@@ -48,13 +59,6 @@ export function proxy(request: NextRequest) {
 
 export const config: MiddlewareConfig = {
     matcher: [
-        /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-        '/((?!api|_next/static|_next/image|favicon.ico).*)',
+        '/((?!api|_next/static|_next/image|.*\\..*).*)',
     ],
 }

@@ -1,4 +1,4 @@
-import { LoginForm } from "@/src/features/login/components/login-form"
+import { LoginForm } from "@/src/features/auth/components/login-form"
 import cat from "@/src/images/cat.png"
 import logo from "@/src/images/logo-simbolo.png"
 import Image from "next/image"
