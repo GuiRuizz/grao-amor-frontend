@@ -1,7 +1,11 @@
+"use client";
+
+import { PasswordInput } from "@/src/components/password-input";
 import { Button } from "@/src/components/ui/button";
 import { FieldGroup, Field, FieldLabel, FieldDescription, FieldSeparator } from "@/src/components/ui/field";
 import { Input } from "@/src/components/ui/input";
 import { cn } from "@/src/lib/utils";
+import { useState } from "react";
 
 
 
@@ -9,6 +13,9 @@ export function SignupForm({
     className,
     ...props
 }: React.ComponentProps<"form">) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <form className={cn("flex flex-col gap-6", className)} {...props}>
             <FieldGroup>
@@ -28,7 +35,12 @@ export function SignupForm({
                 </Field>
                 <Field>
                     <FieldLabel htmlFor="password">Senha</FieldLabel>
-                    <Input id="password" type="password" required />
+                    <PasswordInput
+                        id="password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     <FieldDescription>
                         Precisa ter pelo menos 8 caracteres.
                     </FieldDescription>

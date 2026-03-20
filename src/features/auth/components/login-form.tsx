@@ -13,6 +13,7 @@ import {
 import { Input } from "@/src/components/ui/input";
 import { useLogin } from "../hooks/use-login";
 import { useRouter } from "next/navigation";
+import { PasswordInput } from "@/src/components/password-input";
 
 
 export function LoginForm({
@@ -71,9 +72,8 @@ export function LoginForm({
                         </a>
                     </div>
 
-                    <Input
+                    <PasswordInput
                         id="password"
-                        type="password"
                         required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
