@@ -1,7 +1,7 @@
-import { API_BASE_URL } from "@/src/lib/api";
 import { IAuthResponse } from "../../types/auth";
 import { authRoutes } from "./routes/auth-routes";
 import { LoginRequestDTO } from "./DTO/authDTO";
+import { API_BASE_URL } from "@/src/lib/api";
 
 
 export async function loginRequest(data: LoginRequestDTO): Promise<IAuthResponse> {
