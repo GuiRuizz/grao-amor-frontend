@@ -1,5 +1,6 @@
+import { Footer } from "@/src/components/footer";
 import { HeaderPublic } from "@/src/components/header-public";
-import { Footer } from "react-day-picker";
+
 
 export default function PublicLayout({
   children,
